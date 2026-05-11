@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" class="notranslate">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="google" content="notranslate">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Nailed IT – Reliable handyman and renovation services. Skilled, dependable, and professional repairs for your home or business.">
+    <title>Nailed IT | Reliable Handyman & Renovation Services</title>
+    <link rel="icon" type="image/png" href="nailed-it-logo.png">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.82);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(180, 0, 0, 0.06) 0px, rgba(180, 0, 0, 0.06) 2px, transparent 2px, transparent 6px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body {
+            font-family: 'Figtree', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #f0e6e6;
+            position: relative;
+        }
+
+        .card {
+            max-width: 1400px;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.555);
+            backdrop-filter: blur(14px);
+            border-radius: 28px;
+            padding: 40px 32px;
+            box-shadow: 0 0 0 1px rgba(220, 20, 60, 0.4), 0 25px 50px rgba(0, 0, 0, 0.95), 0 0 35px rgba(180, 0, 0, 0.35);
+            border: 1px solid rgba(220, 20, 60, 0.6);
+            transition: all 0.2s;
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand-logo { display: flex; justify-content: center; margin-bottom: 12px; }
+        .brand-logo img {
+            width: auto;
+            height: 42vh;
+            filter: drop-shadow(0 0 12px #cc0000);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .brand-logo img:hover { transform: scale(1.02); }
+
+        .brand-name {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 52px;
+            font-weight: 700;
+            text-align: center;
+            color: #dc143c;
+            text-shadow: 0 0 8px #dc143c, 0 0 22px #3a0000;
+            letter-spacing: 2px;
+            margin-top: 8px;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            color: #dc143c;
+            text-shadow: 0 0 6px #b30000;
+            margin: 8px 0 6px;
+            letter-spacing: 1px;
+        }
+        .tagline {
+            text-align: center;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 16px;
+            color: #ccaaaa;
+            border-bottom: 1px solid #dc143c;
+            display: inline-block;
+            margin: 0 auto 30px;
+            padding-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .tab-bar {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin: 20px 0 32px;
+            border-bottom: 1px solid #3a0000;
+            padding-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: transparent;
+            border: 1px solid #dc143c;
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 10px 28px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #ccaaaa;
+            backdrop-filter: blur(4px);
+        }
+        .tab-btn i { font-size: 1.2rem; }
+        .tab-btn.active {
+            background: #dc143c;
+            color: #ffffff;
+            box-shadow: 0 0 18px #dc143c, 0 0 8px #8b0000;
+            text-shadow: none;
+            border-color: #dc143c;
+        }
+        .tab-btn:hover:not(.active) {
+            background: rgba(220, 20, 60, 0.25);
+            color: #dc143c;
+            box-shadow: 0 0 12px #cc0000;
+        }
+        .tab-pane { display: none; animation: fadePane 0.3s ease; }
+        .tab-pane.active-pane { display: block; }
+        @keyframes fadePane {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-cover-image {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #dc143c;
+            box-shadow: 0 0 25px rgba(220, 20, 60, 0.5), 0 4px 12px rgba(0,0,0,0.8);
+            margin-bottom: 28px;
+        }
+        .tab-cover-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .tab-cover-image img:hover { transform: scale(1.02); }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin: 30px 0;
+        }
+        .info-card, .pricing-box {
+            background: rgba(10, 0, 0, 0.7);
+            border-radius: 24px;
+            padding: 28px;
+            border: 1px solid #3a0000;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(220, 20, 60, 0.15);
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(6px);
+        }
+        .info-card:hover, .pricing-box:hover {
+            border-color: #dc143c;
+            box-shadow: 0 0 20px rgba(220, 20, 60, 0.5), 0 10px 30px rgba(0, 0, 0, 0.85);
+            transform: translateY(-2px);
+        }
+        .info-card h3, .pricing-box h3 {
+            font-size: 1.6rem;
+            color: #dc143c;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 0 8px #440000;
+        }
+        .list-styled { list-style: none; padding-left: 0; }
+        .list-styled li {
+            margin: 14px 0;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            color: #f0e6e6;
+        }
+        .list-styled li i {
+            color: #dc143c;
+            margin-top: 3px;
+            min-width: 22px;
+            text-shadow: 0 0 8px #b30000;
+        }
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #dc143c;
+            margin: 40px 0 20px 0;
+            border-left: 5px solid #dc143c;
+            padding-left: 20px;
+            text-shadow: 0 0 8px #550000;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        .stat-badge {
+            background: rgba(35, 0, 0, 0.55);
+            border: 1px solid #dc143c;
+            padding: 14px 20px;
+            border-radius: 48px;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #ffcccc;
+            backdrop-filter: blur(4px);
+            box-shadow: inset 0 0 18px rgba(180, 0, 0, 0.3);
+        }
+        .pricing-box {
+            background: linear-gradient(135deg, #0a0000, #050000);
+            text-align: center;
+        }
+        .pricing-box .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #dc143c;
+            margin: 10px 0;
+            text-shadow: 0 0 18px #8b0000, 0 0 4px #400000;
+        }
+        .highlight-text {
+            background: rgba(35, 0, 0, 0.4);
+            border-left: 4px solid #dc143c;
+            padding: 18px 24px;
+            border-radius: 20px;
+            margin: 24px 0;
+            font-weight: 500;
+            color: #ffdddd;
+            line-height: 1.6;
+            box-shadow: 0 0 18px rgba(200, 0, 0, 0.3);
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #1f0000;
+            color: #dc143c;
+            border: 1px solid #dc143c;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            gap: 12px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            font-family: 'Share Tech Mono', monospace;
+        }
+        .button:hover {
+            background: #dc143c;
+            color: #ffffff;
+            box-shadow: 0 0 20px #dc143c, 0 0 8px #8b0000;
+            border-color: #dc143c;
+            transform: translateY(-2px);
+        }
+        .more-info-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #1f0000;
+            color: #dc143c;
+            border: 1px solid #dc143c;
+            padding: 10px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            font-family: 'Share Tech Mono', monospace;
+            margin-top: auto;
+            align-self: flex-start;
+            letter-spacing: 0.5px;
+        }
+        .more-info-btn:hover {
+            background: #dc143c;
+            color: #ffffff;
+            box-shadow: 0 0 20px #dc143c, 0 0 8px #8b0000;
+            border-color: #dc143c;
+            transform: translateY(-2px);
+        }
+        .pricing-box .more-info-btn { align-self: center; margin-top: 16px; }
+
+        .footer-note {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 40px;
+            color: #996666;
+            border-top: 1px solid #3a0000;
+            padding-top: 24px;
+        }
+        .pwa-install-banner {
+            background: #1a0000;
+            color: #dc143c;
+            text-align: center;
+            padding: 12px;
+            border-radius: 60px;
+            margin-top: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid #dc143c;
+            transition: 0.2s;
+            box-shadow: 0 0 12px rgba(200, 0, 0, 0.5);
+        }
+        .pwa-install-banner:hover {
+            background: #dc143c;
+            color: #ffffff;
+            box-shadow: 0 0 22px #cc0000;
+        }
+        .inline-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            margin: 15px 0;
+            border: 1px solid #dc143c;
+            background: #0a0000;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .inline-image:hover { transform: scale(1.02); }
+        .card-detail-text {
+            margin-top: 20px;
+            color: #eedddd;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            border-top: 1px solid rgba(220, 20, 60, 0.4);
+            padding-top: 18px;
+            margin-bottom: 18px;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .value-table th, .value-table td {
+            padding: 12px 16px;
+            text-align: center;
+            border: 1px solid #3a0000;
+        }
+        .value-table th {
+            background: rgba(35, 0, 0, 0.7);
+            color: #dc143c;
+            font-weight: 700;
+            text-shadow: 0 0 6px #660000;
+        }
+        .value-table td {
+            color: #f0e6e6;
+            background: rgba(5, 0, 0, 0.7);
+        }
+        .big-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #dc143c;
+            font-family: 'Share Tech Mono', monospace;
+            text-shadow: 0 0 18px #b30000, 0 0 35px #3a0000;
+            text-align: center;
+            margin: 12px 0;
+        }
+
+        /* ========== CAROUSEL (handyman theme) ========== */
+        .carousel-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 30px 0;
+            display: flex;
+            justify-content: center;
+        }
+        .carousel {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            cursor: grab;
+            user-select: none;
+            touch-action: pan-y pinch-zoom;
+        }
+        .carousel:active { cursor: grabbing; }
+        .carousel::before,
+        .carousel::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 15%;
+            max-width: 120px;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .carousel::before {
+            left: 0;
+            background: linear-gradient(to right, #0a0a0a 0%, transparent 100%);
+        }
+        .carousel::after {
+            right: 0;
+            background: linear-gradient(to left, #0a0a0a 0%, transparent 100%);
+        }
+        .carousel-track {
+            display: flex;
+            align-items: stretch;
+            width: max-content;
+            will-change: transform;
+        }
+        .carousel-item {
+            width: 280px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+        }
+        .carousel-card {
+            display: flex;
+            flex-direction: column;
+            background: rgba(10, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 20px;
+            width: 100%;
+            border: 1px solid #3a0000;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            min-height: 280px;
+        }
+        .carousel-card:hover {
+            border-color: #dc143c;
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(220, 20, 60, 0.4);
+        }
+        .carousel-card-top {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .carousel-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 999px;
+            object-fit: cover;
+            border: 2px solid #dc143c;
+            background: #1a1a1a;
+        }
+        .carousel-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #dc143c;
+            margin-bottom: 4px;
+        }
+        .carousel-stars {
+            color: #facc15;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+        .carousel-review-excerpt {
+            font-size: 0.9rem;
+            color: #e0c0c0;
+            line-height: 1.5;
+            margin-top: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        /* Carousel Modal */
+        .carousel-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(12px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .carousel-modal-overlay.active { display: flex; }
+        .carousel-modal {
+            width: 90%;
+            max-width: 550px;
+            background: #0f0f0f;
+            border-radius: 28px;
+            padding: 28px;
+            text-align: center;
+            border: 2px solid #dc143c;
+            box-shadow: 0 0 40px rgba(220, 20, 60, 0.6);
+        }
+        .carousel-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #dc143c;
+            transition: 0.2s;
+        }
+        .carousel-modal-close:hover { color: #fff; }
+        .carousel-modal img {
+            width: 100px;
+            height: 100px;
+            border-radius: 999px;
+            object-fit: cover;
+            margin-bottom: 16px;
+            border: 2px solid #dc143c;
+        }
+        .carousel-modal h2 {
+            color: #dc143c;
+            margin-bottom: 8px;
+            font-size: 1.6rem;
+        }
+        .carousel-modal .modal-stars {
+            color: #facc15;
+            margin: 8px 0;
+            font-size: 1.2rem;
+        }
+        .carousel-modal .modal-full-review {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-top: 12px;
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            background: rgba(10, 0, 0, 0.7);
+            border-radius: 24px;
+            padding: 28px;
+            border: 1px solid #3a0000;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(220, 20, 60, 0.15);
+            backdrop-filter: blur(6px);
+            width: 100%;
+        }
+        .contact-form h3 {
+            font-size: 1.6rem;
+            color: #dc143c;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 0 8px #440000;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #f0e6e6;
+            font-weight: 600;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #3a0000;
+            background: rgba(0, 0, 0, 0.5);
+            color: #f0e6e6;
+            font-family: 'Share Tech Mono', monospace;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #dc143c;
+            box-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #1f0000;
+            color: #dc143c;
+            border: 1px solid #dc143c;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            gap: 12px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            font-family: 'Share Tech Mono', monospace;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background: #dc143c;
+            color: #ffffff;
+            box-shadow: 0 0 20px #dc143c, 0 0 8px #8b0000;
+            border-color: #dc143c;
+            transform: translateY(-2px);
+        }
+.map-container iframe {
+    filter: grayscale(100%);
+    mix-blend-mode: normal;
+
+}
+        /* Map Container */
+        .map-container {
+            width: 100%;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #dc143c;
+            box-shadow: 0 0 25px rgba(220, 20, 60, 0.5), 0 4px 12px rgba(0,0,0,0.8);
+            margin-top: 28px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .accessibility-widget {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 10px 18px;
+            border-radius: 60px;
+            border: 1px solid #dc143c;
+            z-index: 1100;
+            box-shadow: 0 0 22px rgba(180, 0, 0, 0.5);
+        }
+        .accessibility-widget button {
+            background: #0f0000;
+            border: 1px solid #dc143c;
+            color: #dc143c;
+            font-size: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 48px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-shadow: 0 0 6px #550000;
+        }
+        .accessibility-widget button:hover {
+            background: #dc143c;
+            color: #ffffff;
+            box-shadow: 0 0 20px #cc0000;
+        }
+
+        body.large-text { font-size: 1.2rem; }
+        body.high-contrast {
+            background: #ffffff;
+            color: #000000;
+        }
+        body.high-contrast .card {
+            background: white;
+            border-color: black;
+            color: black;
+        }
+        body.high-contrast .brand-name,
+        body.high-contrast h1,
+        body.high-contrast .section-title {
+            color: black;
+            text-shadow: none;
+        }
+        body.visible-focus :focus-visible {
+            outline: 3px solid #dc143c !important;
+        }
+
+        /* Lightbox (existing) */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+            animation: fadeIn 0.2s ease;
+        }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 42px;
+            color: #dc143c;
+            cursor: pointer;
+            z-index: 2001;
+            text-shadow: 0 0 12px #900;
+            transition: 0.2s;
+        }
+        .lightbox-close:hover { color: #fff; text-shadow: 0 0 20px red; }
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+        .lightbox-content.zoomed {
+            max-width: 100vw;
+            max-height: 100vh;
+            overflow: auto;
+        }
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 35px rgba(220, 20, 60, 0.7);
+            cursor: zoom-in;
+        }
+        .lightbox-content.zoomed img {
+            max-width: none;
+            max-height: none;
+            cursor: zoom-out;
+        }
+        .lightbox-zoom-toggle {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a0000;
+            border: 1px solid #dc143c;
+            color: #dc143c;
+            font-size: 24px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 18px rgba(200,0,0,0.6);
+            transition: 0.2s;
+            z-index: 2001;
+        }
+        .lightbox-zoom-toggle:hover {
+            background: #dc143c;
+            color: #fff;
+            box-shadow: 0 0 28px #f00;
+        }
+
+        @media (max-width: 760px) {
+            .card { padding: 24px 18px; }
+            .brand-name { font-size: 36px; }
+            .tab-btn { padding: 5px 14px; font-size: 1.85rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+            .big-number { font-size: 2rem; }
+            .more-info-btn { padding: 8px 18px; font-size: 0.8rem; }
+            .lightbox-zoom-toggle { width: 44px; height: 44px; font-size: 20px; }
+            .carousel-item { width: 260px; }
+            .carousel-card { padding: 16px; }
+            .carousel-image { width: 55px; height: 55px; }
+        }
+    </style>
+</head>
+<body>
+    
+    <video class="bg-video" autoplay loop muted playsinline>
+        <source src="nailed-it-bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- CENTERED WRAPPER for both contact bar and card -->
+    <div style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;">
+        <style>@media (max-width: 768px){.desktop-only-contact{display:none!important}}</style>
+<div class="desktop-only-contact" style="max-width: 1400px; width: 100%; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); padding: 12px 24px; border-radius: 60px; border: 1px solid #dc143c; flex-wrap: wrap; gap: 15px;">
+    <div style="display: flex; align-items: center; gap: 10px; color: #ffcccc; font-size: 0.9rem;">
+        <i class="fas fa-clock" style="color: #dc143c;"></i>
+        <span>Mon–Sat: 9AM–7PM</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px; color: #ffcccc; font-size: 0.9rem;">
+        <i class="fas fa-map-marker-alt" style="color: #dc143c;"></i>
+        <span>123 New Line, New England USA</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px; color: #ffcccc; font-size: 0.9rem;">
+        <i class="fas fa-phone-alt" style="color: #dc143c;"></i>
+        <span><a href="tel:12345678901" style="color: #ffcccc; text-decoration: none;">1234-5678-9012</a></span>
+    </div>
+</div>
+        <div class="card">
+            <div class="brand-logo">
+                <img src="nailed-it-logo.png" alt="Nailed IT Logo" onerror="this.style.display='none'">
+            </div>
+<!--            <div class="brand-name">Nailed IT</div>-->
+            <h1>Reliable Repair & Renovation Services</h1>
+
+            <div style="text-align: center; margin: 20px 0 15px;">
+                <a href="#" id="callNowTrigger" style="display: inline-flex; align-items: center; justify-content: center; gap: 15px; background: linear-gradient(135deg, #dc143c, #8b0000); color: white; font-family: 'Share Tech Mono', monospace; font-size: 2rem; font-weight: 800; padding: 20px 48px; border-radius: 80px; text-decoration: none; box-shadow: 0 0 35px rgba(220, 20, 60, 0.9), 0 8px 25px rgba(0,0,0,0.5); border: 2px solid #ff6666; transition: 0.2s; letter-spacing: 3px; animation: pulseSlow 9.5s infinite; cursor: pointer;">
+                    <i class="fas fa-phone-alt" style="font-size: 2rem;"></i> CALL NOW
+                </a>
+            </div>
+
+            <style>
+                @keyframes pulseSlow {
+                    0% { transform: scale(1); box-shadow: 0 0 35px rgba(220, 20, 60, 0.9); }
+                    5% { transform: scale(1.05); box-shadow: 0 0 55px rgba(220, 20, 60, 1), 0 0 20px rgba(255,0,0,0.8); }
+                    10% { transform: scale(1); box-shadow: 0 0 35px rgba(220, 20, 60, 0.9); }
+                    100% { transform: scale(1); box-shadow: 0 0 35px rgba(220, 20, 60, 0.9); }
+                }
+            </style>
+
+            <!-- Popup Modal - FIXED position, appears centered on screen -->
+<div id="callPopup" style="display: none; max-height: 100vh; position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center; backdrop-filter: blur(8px);">                <div style="background: #0a0a0a; border: 2px solid #dc143c; border-radius: 32px; padding: 40px; max-width: 500px; width: 90%; text-align: center; box-shadow: 0 0 60px rgba(220,20,60,0.6);">
+                    <h3 style="color: #dc143c; font-family: 'Share Tech Mono', monospace; font-size: 1.8rem; margin-bottom: 30px;">Contact Nailed IT</h3>
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                        <a href="tel:12345678901" style="background: #1f0000; color: #dc143c; border: 1px solid #dc143c; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 1.2rem; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.2s;">
+                            <i class="fas fa-phone-alt"></i> Call
+                        </a>
+                        <a href="mailto:support@Construct.com" style="background: #1f0000; color: #dc143c; border: 1px solid #dc143c; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 1.2rem; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.2s;">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="sms:12345678901" style="background: #1f0000; color: #dc143c; border: 1px solid #dc143c; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 1.2rem; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.2s;">
+                            <i class="fas fa-comment-dots"></i> Text
+                        </a>
+                    </div>
+                    <button id="closePopup" style="margin-top: 30px; background: transparent; border: 1px solid #dc143c; color: #dc143c; padding: 8px 30px; border-radius: 40px; cursor: pointer; font-family: 'Share Tech Mono', monospace; font-size: 1rem;">Close</button>
+                </div>
+            </div>
+
+            <div style="text-align: center;"><span class="tagline"><i class="fas fa-tools"></i> Skilled AND Dependable · From Small Repairs to Complete Home Improvements</span></div>
+
+            <noscript>
+                <p><i class="fas fa-exclamation-triangle"></i> JavaScript is required to view this interactive page. Please enable JavaScript or use a modern browser.</p>
+            </noscript>
+
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="pitch-tab"><i class="fas fa-wrench"></i> Services & Projects</button>
+                <button class="tab-btn" data-tab="invest-tab"><i class="fas fa-phone"></i> About & Contact</button>
+            </div>
+
+            <!-- TAB 1: SERVICES & PROJECTS -->
+            <div id="pitch-tab" class="tab-pane active-pane">
+                <div class="tab-cover-image">
+                    <img src="nailed-it-banner-91.png" alt="Nailed IT Services & Projects Cover" onerror="this.style.display='none'">
+                </div>
+
+                <div class="stat-badge"><i class="fas fa-hard-hat"></i> We Are Certified Handyman Experts — Reliable Repair & Renovation Services, delivered with pride.</div>
+
+                <div class="grid-2col">
+                    <div class="info-card">
+                        <h3><i class="fas fa-building"></i> Commercial Services</h3>
+                        <ul class="list-styled">
+                            <li><i class="fas fa-check-circle"></i> New builds and major renovations for commercial properties.</li>
+                            <li><i class="fas fa-calendar-check"></i> Meticulous budgeting, scheduling, and contractor coordination.</li>
+                            <li><i class="fas fa-shield-alt"></i> Highest standards of quality and safety on every project.</li>
+                            <li><i class="fas fa-handshake"></i> Seamless project management from start to finish.</li>
+                        </ul>
+                        <img src="1.png" alt="Commercial construction project" class="inline-image" onerror="this.style.display='none'">
+                        <div class="card-detail-text">
+                            <p><strong>Commercial expertise:</strong> At Nailed IT, we specialize in delivering top-tier construction services for commercial properties. Our team ensures that your project runs seamlessly from start to finish, with meticulous attention to budgeting, scheduling, and contractor coordination. Whether you're planning a new build or a major renovation, we manage every phase with precision and efficiency.</p>
+                        </div>
+                        <a href="commercial-services.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a>
+                    </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-home"></i> Residential Renovation</h3>
+                        <ul class="list-styled">
+                            <li><i class="fas fa-paint-roller"></i> Kitchen remodels, bathroom updates, and full home renovations.</li>
+                            <li><i class="fas fa-pencil-ruler"></i> Customized solutions tailored to your style and budget.</li>
+                            <li><i class="fas fa-dumpster"></i> We handle everything — design, demolition, and final installation.</li>
+                            <li><i class="fas fa-star"></i> Exceptional craftsmanship that brings your vision to life.</li>
+                        </ul>
+                        <img src="2.png" alt="Residential renovation" class="inline-image" onerror="this.style.display='none'">
+                        <div class="card-detail-text">
+                            <p><strong>Residential transformation:</strong> Transform your home with Nailed IT's expert renovation services! Whether you're updating a single room or renovating your entire home, our team brings your vision to life with exceptional craftsmanship. From kitchen remodels to bathroom updates, we offer customized solutions tailored to fit your style and budget.</p>
+                        </div>
+                        <a href="residential-renovation.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a>
+                    </div>
+                </div>
+
+                <div class="section-title">🛠️ How We Work</div>
+                <div class="grid-2col">
+                    <div class="info-card">
+                        <h3><i class="fas fa-medal"></i> We Deliver Quality</h3>
+                        <ul class="list-styled">
+                            <li><i class="fas fa-check-double"></i> Top-notch craftsmanship and attention to every detail.</li>
+                            <li><i class="fas fa-thumbs-up"></i> Highest quality standards for all services — big or small.</li>
+                            <li><i class="fas fa-clipboard-check"></i> Every project inspected before we call it done.</li>
+                        </ul>
+                        <img src="3.png" alt="Quality craftsmanship" class="inline-image" onerror="this.style.display='none'">
+                        <div class="card-detail-text">
+                            <p><strong>Quality in action:</strong> From quick fixes to comprehensive remodels, our team takes pride in delivering exceptional workmanship. We use premium materials and proven techniques to ensure lasting results. Every project receives our full attention — no shortcuts, no compromises.</p>
+                        </div>
+                        <a href="quality-delivery.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a>
+                    </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-clock"></i> Always On Time</h3>
+                        <ul class="list-styled">
+                            <li><i class="fas fa-calendar-check"></i> We complete every project on schedule.</li>
+                            <li><i class="fas fa-bell"></i> Minimal disruption to your daily life or business operations.</li>
+                            <li><i class="fas fa-phone-volume"></i> Clear communication throughout the entire process.</li>
+                        </ul>
+                        <img src="4.png" alt="On-time service" class="inline-image" onerror="this.style.display='none'">
+                        <div class="card-detail-text">
+                            <p><strong>Reliability in action:</strong> We value your time. Our team arrives when promised and works efficiently to meet deadlines. We provide realistic timelines upfront and keep you updated every step of the way. When we say we'll be there, we mean it.</p>
+                        </div>
+                        <a href="always-on-time.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a>
+                    </div>
+                </div>
+
+                <div class="section-title">🏆 Featured Projects</div>
+                <div class="grid-2col">
+                    <div class="info-card">
+                        <h3><i class="fas fa-utensils"></i> Kitchen Renovation</h3>
+                        <ul class="list-styled">
+                            <li><i class="fas fa-map-marker-alt"></i> New England, USA — complete kitchen transformation.</li>
+                            <li><i class="fas fa-calendar-alt"></i> Completed in 3 weeks, on budget.</li>
+                            <li><i class="fas fa-star"></i> Custom cabinetry, new appliances, modern finishes.</li>
+                        </ul>
+                        <table class="value-table">
+                            <tr><th>Before</th><th>After</th><th>Result</th></tr>
+                            <tr><td>Outdated</td><td>Modern</td><td style="color:#dc143c;">Stunning</td>
+                            </tr>
+                        </table>
+                        <img src="5.png" alt="Kitchen renovation before and after" class="inline-image" onerror="this.style.display='none'">
+                        <div class="card-detail-text">
+                            <p><strong>Kitchen transformation:</strong> Our team completely renovated this dated New England kitchen, installing custom cabinetry, quartz countertops, and modern appliances. The project was completed in just 3 weeks — on time and within the agreed budget.</p>
+                        </div>
+                        <a href="kitchen-renovation.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a>
+                    </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-bath"></i> Bathroom Remodel</h3>
+                        <ul class="list-styled">
+                            <li><i class="fas fa-map-marker-alt"></i> New England, USA — full bathroom modernization.</li>
+                            <li><i class="fas fa-calendar-alt"></i> Completed in 10 days, minimal disruption.</li>
+                            <li><i class="fas fa-tint"></i> New plumbing, tiling, fixtures, and lighting.</li>
+                        </ul>
+                        <table class="value-table">
+                            <tr><th>Before</th><th>After</th><th>Result</th></tr>
+                            <tr><td>Dated</td><td>Luxurious</td><td style="color:#dc143c;">Transformed</td>
+                            </tr>
+                        </table>
+                        <img src="6.png" alt="Bathroom remodel before and after" class="inline-image" onerror="this.style.display='none'">
+                        <div class="card-detail-text">
+                            <p><strong>Bathroom transformation:</strong> We turned a dated, cramped bathroom into a luxurious modern space. New plumbing, floor-to-ceiling tiling, a walk-in shower, and elegant fixtures. Completed in just 10 days with minimal disruption to the family's routine.</p>
+                        </div>
+                        <a href="bathroom-remodel.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a>
+                    </div>
+                </div>
+
+                <div class="highlight-text" style="text-align:center;">
+                    <div class="big-number">500+</div>
+                    <p style="font-size:1.1rem; margin-top:8px;">Projects completed across New England. From small repairs to full renovations — every job done right.</p>
+                </div>
+
+                <!-- Existing two customer reviews -->
+                <div class="section-title">💬 What Our Customers Say</div>
+                <div class="grid-2col">
+                    <div class="info-card">
+                        <h3><i class="fas fa-quote-right"></i> John Smith</h3>
+                        <ul class="list-styled">
+                            <li><i class="fas fa-star"></i> "I had some electrical issues at home, and Nailed IT took care of everything."</li>
+                            <li><i class="fas fa-user-check"></i> "The team was knowledgeable, friendly, and explained everything clearly."</li>
+                            <li><i class="fas fa-heart"></i> "The problem was fixed quickly and efficiently. Will definitely call them again!"</li>
+                        </ul>
+                        <img src="13.png" alt="Happy customer" class="inline-image" onerror="this.style.display='none'">
+                        <div class="card-detail-text">
+                            <p><strong>Electrical repair:</strong> John called us about flickering lights and a faulty outlet. Our electrician diagnosed the issue within 30 minutes, completed all repairs the same day, and walked John through what was done. Fast, transparent, and friendly — exactly how we like it.</p>
+                        </div>
+                        <a href="testimonial-john.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a>
+                    </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-quote-right"></i> Sarah Johnson</h3>
+                        <ul class="list-styled">
+                            <li><i class="fas fa-star"></i> "I hired Nailed IT for a bathroom remodel, and they exceeded all expectations."</li>
+                            <li><i class="fas fa-calendar-check"></i> "The project was completed on time and within budget."</li>
+                            <li><i class="fas fa-thumbs-up"></i> "The quality of work was excellent. Highly recommend!"</li>
+                        </ul>
+                        <img src="14.png" alt="Satisfied client" class="inline-image" onerror="this.style.display='none'">
+                        <div class="card-detail-text">
+                            <p><strong>Bathroom remodel:</strong> Sarah wanted a modern bathroom but was worried about costs and timelines. We delivered a stunning transformation — new tiling, walk-in shower, and vanity — all within her budget and finished 2 days ahead of schedule. She couldn't be happier.</p>
+                        </div>
+                        <a href="testimonial-sarah.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a>
+                    </div>
+                </div>
+
+                <!-- NEW: Customer Reviews Carousel (infinite, centered) -->
+                <div class="section-title">⭐ More Happy Customers</div>
+                <div class="carousel-wrapper">
+                    <div class="carousel" id="reviewCarousel">
+                        <div class="carousel-track" id="carouselTrack"></div>
+                    </div>
+                </div>
+
+                <div class="stat-badge"><i class="fas fa-check-circle"></i> Fully licensed & insured · Free estimates · Satisfaction guaranteed · No job too small</div>
+
+                <!-- NEW: Map Container -->
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2944.8!2d-71.059775!3d42.358430999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e377427a0b5a1b%3A0x40c9d1e554544b0!2sNew%20England%2C%20USA!5e0!3m2!1sen!2sus!4v1635959999999!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- TAB 2: ABOUT & CONTACT -->
+            <div id="invest-tab" class="tab-pane">
+                <div class="tab-cover-image">
+                    <img src="nailed-it-banner-9.png" alt="About Nailed IT Cover" onerror="this.style.display='none'">
+                </div>
+                <div class="stat-badge"><i class="fas fa-star"></i> Skilled AND Dependable — Professional handyman and renovation services for your home or business.</div>
+                <div class="section-title">🔧 Our Full Service Range</div>
+                <div class="grid-2col">
+                    <div class="info-card"><h3><i class="fas fa-wrench"></i> Plumbing</h3><ul class="list-styled"><li><i class="fas fa-tint"></i> Leak detection and pipe repairs.</li><li><i class="fas fa-toilet"></i> Fixture installation — sinks, toilets, showers.</li><li><i class="fas fa-water"></i> Water heater installation and maintenance.</li></ul><img src="7.png" alt="Plumbing services" class="inline-image" onerror="this.style.display='none'"><div class="card-detail-text"><p><strong>Plumbing expertise:</strong> From dripping taps to full bathroom plumbing, our licensed plumbers handle it all. Fast response for emergencies, thorough work for installations. No job is too small — we treat every leak like it's our own home.</p></div><a href="plumbing-services.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a></div>
+                    <div class="info-card"><h3><i class="fas fa-bolt"></i> Electrical</h3><ul class="list-styled"><li><i class="fas fa-lightbulb"></i> Lighting installation and troubleshooting.</li><li><i class="fas fa-plug"></i> Outlet and switch repairs and upgrades.</li><li><i class="fas fa-shield-alt"></i> Safety inspections and electrical panel work.</li></ul><img src="8.png" alt="Electrical work" class="inline-image" onerror="this.style.display='none'"><div class="card-detail-text"><p><strong>Electrical services:</strong> Our certified electricians provide safe, reliable electrical work for homes and businesses. From adding new outlets to complete rewiring, we ensure every connection is secure and up to code. Clear explanations, fair pricing, no surprises.</p></div><a href="electrical-services.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a></div>
+                    <div class="info-card"><h3><i class="fas fa-hammer"></i> Carpentry & Cabinetry</h3><ul class="list-styled"><li><i class="fas fa-door-open"></i> Custom cabinetry and shelving.</li><li><i class="fas fa-chair"></i> Door and window frame repairs.</li><li><i class="fas fa-tape"></i> Trim work, baseboards, and crown molding.</li></ul><img src="9.png" alt="Carpentry and cabinetry" class="inline-image" onerror="this.style.display='none'"><div class="card-detail-text"><p><strong>Carpentry craftsmanship:</strong> Custom woodwork that adds character and value to your space. Whether it's built-in bookshelves, a new staircase, or custom kitchen cabinets, our carpenters bring precision and artistry to every piece.</p></div><a href="carpentry-cabinetry.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a></div>
+                    <div class="info-card"><h3><i class="fas fa-paint-roller"></i> Painting & Drywall</h3><ul class="list-styled"><li><i class="fas fa-fill-drip"></i> Interior and exterior painting.</li><li><i class="fas fa-layer-group"></i> Drywall installation and repair.</li><li><i class="fas fa-broom"></i> Clean, tidy work — we respect your space.</li></ul><img src="10.png" alt="Painting and drywall" class="inline-image" onerror="this.style.display='none'"><div class="card-detail-text"><p><strong>Painting and drywall:</strong> Fresh paint transforms any room. Our team delivers smooth, even finishes with meticulous prep work. Drywall repairs are seamless — you'll never know there was a hole. We protect your furniture and floors, and leave every room spotless.</p></div><a href="painting-drywall.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a></div>
+                </div>
+                <div class="section-title">📞 Contact Nailed IT</div>
+                <div class="grid-2col">
+                    <div class="pricing-box"><div class="price">Mon–Sat</div><p><strong>Opening Hours</strong><br>9:00 AM – 7:00 PM<br>Available for emergency calls.</p><img src="11.png" alt="Contact us" class="inline-image" onerror="this.style.display='none'"><div class="card-detail-text"><p><strong>Our working hours:</strong> We're available Monday through Saturday from 9:00 to 19:00. For urgent repairs outside these hours, call us — we'll do our best to accommodate emergency requests. Free estimates during business hours, no obligation.</p></div><a href="opening-hours.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a></div>
+                    <div class="pricing-box"><div class="price">Call Now</div><p><strong>1234-5678-9012</strong><br>support@Construct.com<br>123 New Line, New England USA</p><img src="12.png" alt="Phone and email" class="inline-image" onerror="this.style.display='none'"><div class="card-detail-text"><p><strong>Get in touch:</strong> Call or email us for a free quote. We're based at 123 New Line, New England USA, and serve the greater New England area. Fast response, fair pricing, and friendly service — that's the Nailed IT promise. We look forward to working with you!</p></div><a href="contact-us.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a></div>
+                </div>
+                <div class="highlight-text"><i class="fas fa-star"></i> <strong>Free estimates · No obligation · Friendly service</strong> — Call 1234-5678-9012 or email support@Construct.com today!</div>
+
+                <!-- NEW: Contact Form -->
+                <div class="section-title">📩 Get In Touch</div>
+                <div class="contact-form">
+                    <h3><i class="fas fa-envelope"></i> Send Us a Message</h3>
+                    <form id="contactForm" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Your Phone (Optional)</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </form>
+                </div>
+
+                <div class="section-title">📍 Why Choose Nailed IT</div>
+                <div class="info-card"><h3><i class="fas fa-thumbs-up"></i> The Nailed IT Difference</h3><ul class="list-styled"><li><i class="fas fa-medal"></i> We Deliver Quality — Top-notch craftsmanship and attention to detail in every job.</li><li><i class="fas fa-clock"></i> Always On Time — We complete every project on schedule with minimal disruption.</li><li><i class="fas fa-heart"></i> We Are Passionate — Enthusiasm and dedication to every task, no matter the size.</li><li><i class="fas fa-briefcase"></i> Professional Services — Years of experience, fully licensed and insured.</li></ul><div class="card-detail-text"><p><strong>Why customers choose us:</strong> We stand out for our reliability, attention to detail, and commitment to quality. Your satisfaction is our top priority — always.</p></div><a href="why-choose-us.html" class="more-info-btn"><i class="fas fa-arrow-right"></i> More Info</a></div>
+                <div class="highlight-text"><i class="fas fa-question-circle"></i> <strong>We do it all!</strong> Plumbing repairs, electrical work, full home remodeling, interior and exterior painting, drywall installation, flooring, custom carpentry, and home maintenance. One call handles it all — <strong>1234-5678-9012</strong>. Ready to get started?</div>
+            </div>
+
+            <div id="pwaInstallBanner" class="pwa-install-banner" style="display: none;"><i class="fas fa-download"></i> Install Nailed IT App (PWA) — quick access anytime</div>
+            <div class="footer-note"><i class="fas fa-globe"></i> Nailed IT Handyman Services | 123 New Line, New England USA | 1234-5678-9012 | support@Construct.com | Mon–Sat 9:00–19:00</div>
+        </div>
+    </div>
+
+    <!-- Lightbox (existing) -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+        <button class="lightbox-zoom-toggle" title="Toggle zoom"><i class="fas fa-search-plus"></i></button>
+    </div>
+
+    <!-- Carousel Modal (for review details) -->
+    <div id="carouselModalOverlay" class="carousel-modal-overlay">
+        <div class="carousel-modal">
+            <div class="carousel-modal-close" id="carouselModalClose">✕</div>
+            <img id="carouselModalImage" src="" alt="">
+            <h2 id="carouselModalName"></h2>
+            <div class="modal-stars" id="carouselModalStars"></div>
+            <div class="modal-full-review" id="carouselModalReview"></div>
+        </div>
+    </div>
+
+    <div class="accessibility-widget">
+        <button id="a11y-large-text" aria-label="Large text"><i class="fas fa-text-height"></i></button>
+        <button id="a11y-high-contrast" aria-label="High contrast"><i class="fas fa-adjust"></i></button>
+        <button id="a11y-visible-focus" aria-label="Visible focus"><i class="fas fa-eye"></i></button>
+    </div>
+
+    <script>
+        (function() {
+            // Tabs
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const panes = document.querySelectorAll('.tab-pane');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.getAttribute('data-tab');
+                    panes.forEach(p => p.classList.remove('active-pane'));
+                    const targetPane = document.getElementById(tabId);
+                    if (targetPane) targetPane.classList.add('active-pane');
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+
+            // Accessibility
+            const body = document.body;
+            document.getElementById('a11y-large-text').addEventListener('click', () => body.classList.toggle('large-text'));
+            document.getElementById('a11y-high-contrast').addEventListener('click', () => body.classList.toggle('high-contrast'));
+            document.getElementById('a11y-visible-focus').addEventListener('click', () => body.classList.toggle('visible-focus'));
+
+            // PWA install
+            let deferredPrompt;
+            const installBanner = document.getElementById('pwaInstallBanner');
+            window.addEventListener('beforeinstallprompt', e => {
+                e.preventDefault();
+                deferredPrompt = e;
+                installBanner.style.display = 'block';
+            });
+            installBanner.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    await deferredPrompt.userChoice;
+                    installBanner.style.display = 'none';
+                    deferredPrompt = null;
+                }
+            });
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js').catch(console.log);
+            }
+
+            // Lightbox functionality (existing)
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxContent = document.querySelector('.lightbox-content');
+            const closeBtn = document.querySelector('.lightbox-close');
+            const zoomToggle = document.querySelector('.lightbox-zoom-toggle');
+            function openLightbox(src) {
+                lightboxImg.src = src;
+                lightbox.classList.add('active');
+                lightboxContent.classList.remove('zoomed');
+            }
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                lightboxContent.classList.remove('zoomed');
+                lightboxImg.src = '';
+            }
+            const card = document.querySelector('.card');
+            card.addEventListener('click', function(e) {
+                const target = e.target;
+                if (target.tagName === 'IMG' && target.closest('.card') && !target.closest('.carousel-card') && !target.closest('.carousel-modal')) {
+                    if (target.style.display !== 'none') openLightbox(target.src);
+                }
+            });
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox || e.target === lightboxContent) closeLightbox();
+            });
+            zoomToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                lightboxContent.classList.toggle('zoomed');
+                const icon = zoomToggle.querySelector('i');
+                if (lightboxContent.classList.contains('zoomed')) {
+                    icon.classList.remove('fa-search-plus');
+                    icon.classList.add('fa-search-minus');
+                } else {
+                    icon.classList.remove('fa-search-minus');
+                    icon.classList.add('fa-search-plus');
+                }
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+            });
+
+            // Contact Form Submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+
+            // ========== INFINITE CENTERED CAROUSEL (for reviews) ==========
+            const reviewItems = [
+                { name: "Michael T.", stars: 5, image: "https://randomuser.me/api/portraits/men/32.jpg", review: "Nailed IT completely renovated my kitchen. The team was professional, clean, and finished two days early. The quality of work is outstanding — my new cabinets and quartz countertops look perfect. I've already recommended them to three neighbors!" },
+                { name: "Linda R.", stars: 5, image: "https://randomuser.me/api/portraits/women/68.jpg", review: "Had a leaking pipe emergency on a Sunday. They showed up within an hour, fixed it fast, and didn't overcharge. Fair price, honest work. Will definitely use them again for all my home repairs." },
+                { name: "David K.", stars: 4, image: "https://randomuser.me/api/portraits/men/45.jpg", review: "Excellent electrical work. They installed new lighting and outlets throughout my basement. The team was courteous and explained everything. Only minor delay because of part availability, but communication was great." },
+                { name: "Patricia M.", stars: 5, image: "https://randomuser.me/api/portraits/women/22.jpg", review: "I needed my bathroom remodeled before my parents visited. Nailed IT delivered a stunning transformation in just 9 days — new shower, vanity, floor tiles. My parents were impressed. Thank you!" },
+                { name: "Robert S.", stars: 5, image: "https://randomuser.me/api/portraits/men/91.jpg", review: "From small drywall patches to painting my entire living room, they handled everything with care. The price was fair and they always cleaned up before leaving. Highly recommend for any handyman needs." },
+                { name: "Jennifer W.", stars: 5, image: "https://randomuser.me/api/portraits/women/44.jpg", review: "They built custom bookshelves for my home office. The craftsmanship is beautiful — exactly what I envisioned. On time, on budget, and the team was a pleasure to work with. Five stars!" }
+            ];
+
+            class InfiniteCenteredCarousel {
+                constructor({ container, items = [], speed = 0.35 }) {
+                    this.container = document.querySelector(container);
+                    this.track = this.container.querySelector(".carousel-track");
+                    this.originalItems = items;
+                    this.items = [...items, ...items, ...items];
+                    this.speed = speed;
+                    this.currentX = 0;
+                    this.dragging = false;
+                    this.dragStarted = false;
+                    this.startX = 0;
+                    this.startTranslate = 0;
+                    this.halfWidth = 0;
+                    this.dragThreshold = 5;
+                    this.raf = null;
+                    this.render();
+                    requestAnimationFrame(() => {
+                        this.measure();
+                        this.currentX = -this.halfWidth;
+                        this.bindEvents();
+                        this.animate();
+                    });
+                }
+
+                render() {
+                    this.track.innerHTML = "";
+                    this.items.forEach(item => {
+                        const slide = document.createElement("div");
+                        slide.className = "carousel-item";
+                        const starDisplay = "★".repeat(item.stars) + "☆".repeat(5 - item.stars);
+                        const excerpt = item.review.length > 120 ? item.review.substring(0, 120) + "…" : item.review;
+                        slide.innerHTML = `
+                            <div class="carousel-card">
+                                <div class="carousel-card-top">
+                                    <img class="carousel-image" src="${item.image}" alt="${item.name}" draggable="false" onerror="this.src='https://randomuser.me/api/portraits/lego/1.jpg'">
+                                    <div>
+                                        <div class="carousel-name">${item.name}</div>
+                                        <div class="carousel-stars">${starDisplay}</div>
+                                    </div>
+                                </div>
+                                <div class="carousel-review-excerpt">"${excerpt}"</div>
+                            </div>
+                        `;
+                        slide.addEventListener("click", (e) => {
+                            if (this.dragStarted || this.dragging) return;
+                            this.openModal(item);
+                        });
+                        this.track.appendChild(slide);
+                    });
+                }
+
+                measure() {
+                    this.halfWidth = this.track.scrollWidth / 3;
+                }
+
+                normalize() {
+                    if (this.currentX <= -(this.halfWidth * 2)) this.currentX += this.halfWidth;
+                    if (this.currentX >= 0) this.currentX -= this.halfWidth;
+                }
+
+                animate = () => {
+                    if (!this.dragging) this.currentX -= this.speed;
+                    this.normalize();
+                    this.track.style.transform = `translate3d(${this.currentX}px, 0, 0)`;
+                    this.raf = requestAnimationFrame(this.animate);
+                };
+
+                onDown(x) {
+                    this.dragging = true;
+                    this.dragStarted = false;
+                    this.startX = x;
+                    this.startTranslate = this.currentX;
+                }
+
+                onMove(x) {
+                    if (!this.dragging) return;
+                    const delta = x - this.startX;
+                    if (Math.abs(delta) > this.dragThreshold) this.dragStarted = true;
+                    if (this.dragStarted) {
+                        this.currentX = this.startTranslate + delta;
+                        this.normalize();
+                    }
+                }
+
+                onUp() {
+                    this.dragging = false;
+                    setTimeout(() => { this.dragStarted = false; }, 50);
+                }
+
+                bindEvents() {
+                    window.addEventListener("resize", () => this.measure());
+                    this.container.addEventListener("mousedown", (e) => {
+                        if (e.button !== 0) return;
+                        e.preventDefault();
+                        this.onDown(e.clientX);
+                    });
+                    window.addEventListener("mousemove", (e) => this.onMove(e.clientX));
+                    window.addEventListener("mouseup", () => this.onUp());
+                    this.container.addEventListener("touchstart", (e) => {
+                        if (e.touches.length === 1) this.onDown(e.touches[0].clientX);
+                    }, { passive: true });
+                    this.container.addEventListener("touchmove", (e) => {
+                        if (e.touches.length === 1) this.onMove(e.touches[0].clientX);
+                    }, { passive: true });
+                    this.container.addEventListener("touchend", () => this.onUp());
+                }
+
+                openModal(item) {
+                    const starDisplay = "★".repeat(item.stars) + "☆".repeat(5 - item.stars);
+                    document.getElementById("carouselModalImage").src = item.image;
+                    document.getElementById("carouselModalName").innerText = item.name;
+                    document.getElementById("carouselModalStars").innerHTML = starDisplay;
+                    document.getElementById("carouselModalReview").innerText = item.review;
+                    document.getElementById("carouselModalOverlay").classList.add("active");
+                }
+            }
+
+            new InfiniteCenteredCarousel({
+                container: "#reviewCarousel",
+                items: reviewItems,
+                speed: 0.35
+            });
+
+            // Carousel modal close
+            const carouselModalOverlay = document.getElementById("carouselModalOverlay");
+            const carouselModalClose = document.getElementById("carouselModalClose");
+            carouselModalClose.addEventListener("click", () => carouselModalOverlay.classList.remove("active"));
+            carouselModalOverlay.addEventListener("click", (e) => {
+                if (e.target === carouselModalOverlay) carouselModalOverlay.classList.remove("active");
+            });
+        })();
+    </script>
+    
+    <script>
+        document.getElementById('callNowTrigger').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('callPopup').style.display = 'flex';
+        });
+        document.getElementById('closePopup').addEventListener('click', function() {
+            document.getElementById('callPopup').style.display = 'none';
+        });
+        document.getElementById('callPopup').addEventListener('click', function(e) {
+            if (e.target === this) this.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
