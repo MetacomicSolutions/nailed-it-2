@@ -54,6 +54,7 @@
         .brand-logo img {
             width: 90px; height: 90px; object-fit: contain; border-radius: 28px;
             box-shadow: 0 8px 22px rgba(255,0,0,0.6);
+            cursor: pointer;
         }
         .brand-name {
             font-family: 'Share Tech Mono', monospace; font-size: 48px; font-weight: 700;
@@ -83,6 +84,7 @@
             height: auto;
             display: block;
             object-fit: cover;
+            cursor: pointer;
         }
 
         .section-title {
@@ -150,7 +152,7 @@
             box-shadow: 0 12px 28px var(--shadow), 0 0 30px rgba(139,0,0,0.5);
             border: 1px solid var(--brand-primary);
         }
-        .bottom-cover img { width: 100%; height: auto; display: block; }
+        .bottom-cover img { width: 100%; height: auto; display: block; cursor: pointer; }
 
         .footer-note {
             font-size: 0.85rem; text-align: center; margin-top: 48px; padding-top: 24px;
@@ -174,12 +176,96 @@
         body.large-text .stat-badge { font-size: 1.3rem; }
         body.large-text .pricing-box .price { font-size: 2.8rem; }
 
+        /* ========== LIGHTBOX STYLES ========== */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.2s ease;
+            padding: 20px;
+        }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-close {
+            position: absolute;
+            top: 16px; right: 20px;
+            font-size: 36px;
+            color: #dc143c;
+            cursor: pointer;
+            z-index: 2001;
+            text-shadow: 0 0 10px #900;
+            transition: 0.2s;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+        .lightbox-close:hover { color: #fff; text-shadow: 0 0 16px red; }
+        .lightbox-content {
+            max-width: 92vw;
+            max-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+        .lightbox-content.zoomed {
+            max-width: 100vw;
+            max-height: 100vh;
+            overflow: auto;
+        }
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 0 25px rgba(220, 20, 60, 0.5);
+            cursor: zoom-in;
+        }
+        .lightbox-content.zoomed img {
+            max-width: none;
+            max-height: none;
+            cursor: zoom-out;
+        }
+        .lightbox-zoom-toggle {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a0000;
+            border: 1px solid #dc143c;
+            color: #dc143c;
+            font-size: 20px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 14px rgba(200,0,0,0.5);
+            transition: 0.2s;
+            z-index: 2001;
+        }
+        .lightbox-zoom-toggle:hover {
+            background: #dc143c;
+            color: #fff;
+            box-shadow: 0 0 22px #f00;
+        }
+
         @media (max-width: 860px) {
             .grid-2col { grid-template-columns: 1fr; gap: 20px; }
             .card { padding: 24px 20px; }
             h1 { font-size: 26px; }
             .section-title { font-size: 24px; }
             .brand-name { font-size: 36px; }
+            .lightbox-close { top: 12px; right: 14px; font-size: 30px; }
+            .lightbox-zoom-toggle { width: 38px; height: 38px; font-size: 18px; bottom: 16px; }
         }
     </style>
 </head>
@@ -192,7 +278,7 @@
     <main style="width:100%; display:flex; justify-content:center;">
         <div class="card">
             <header>
-                <div class="brand-logo"><a href="#" aria-label="Home"><img src="nailed-it-logo.png" alt="Nailed IT logo"></a></div>
+                <div class="brand-logo"><a href="#" aria-label="Home"><img src="nailed-it-logo.png" alt="Nailed IT logo" class="lightbox-trigger"></a></div>
                 <div class="brand-name">NAILED IT</div>
                 <h1>What You're Getting — A Handyman Website That Works</h1>
                 <div class="subhead">English · Easy to Use · Works on Phones and Computers · Ready for Your Info</div>
@@ -200,7 +286,7 @@
 
             <!-- Large cover photo right under the titles -->
             <div class="cover-photo">
-                <img src="nailed-it-banner-8.png" alt="Nailed IT handyman banner: Reliable Repair & Renovation Services">
+                <img src="nailed-it-banner-8.png" alt="Nailed IT handyman banner: Reliable Repair & Renovation Services" class="lightbox-trigger">
             </div>
 
             <div class="stat-badge">
@@ -322,7 +408,7 @@
             </div>
 
             <div class="bottom-cover">
-                <img src="nailed-it-banner.png" alt="Nailed IT handyman banner: Reliable Repair & Renovation Services" loading="lazy">
+                <img src="nailed-it-banner.png" alt="Nailed IT handyman banner: Reliable Repair & Renovation Services" class="lightbox-trigger" loading="lazy">
             </div>
 
             <div class="footer-note">
@@ -331,12 +417,22 @@
         </div>
     </main>
 
+    <!-- Lightbox overlay (added for zoomable image inspection) -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+        <button class="lightbox-zoom-toggle" title="Toggle zoom"><i class="fas fa-search-plus"></i></button>
+    </div>
+
     <div class="text-size-control" id="text-size-toggle" title="Toggle larger text" aria-label="Toggle larger text">
         <i class="fas fa-text-height"></i>
     </div>
 
     <script>
         (function() {
+            // Text size toggle (existing)
             const body = document.body;
             const textSizeBtn = document.getElementById('text-size-toggle');
             if (textSizeBtn) {
@@ -346,6 +442,75 @@
                 });
                 if (localStorage.getItem('largeText') === 'true') body.classList.add('large-text');
             }
+
+            // ========== LIGHTBOX FUNCTIONALITY ==========
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxContent = document.querySelector('.lightbox-content');
+            const closeBtn = document.querySelector('.lightbox-close');
+            const zoomToggle = document.querySelector('.lightbox-zoom-toggle');
+
+            function openLightbox(src) {
+                lightboxImg.src = src;
+                lightbox.classList.add('active');
+                lightboxContent.classList.remove('zoomed');
+                zoomToggle.querySelector('i').classList.remove('fa-search-minus');
+                zoomToggle.querySelector('i').classList.add('fa-search-plus');
+                // Prevent body scroll when lightbox is open
+                body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                lightboxContent.classList.remove('zoomed');
+                lightboxImg.src = '';
+                body.style.overflow = '';
+            }
+
+            // Attach click event to all images with class "lightbox-trigger" (and any img inside .card)
+            const card = document.querySelector('.card');
+            if (card) {
+                card.addEventListener('click', function(e) {
+                    const target = e.target;
+                    if (target.tagName === 'IMG' && target.style.display !== 'none') {
+                        // Prevent opening lightbox if the image is inside a link or some other interactive element
+                        // But we allow any image inside .card to trigger it.
+                        e.preventDefault();
+                        openLightbox(target.src);
+                    }
+                });
+            }
+
+            // Close button
+            closeBtn.addEventListener('click', closeLightbox);
+
+            // Close when clicking outside the image (on the overlay background)
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox || e.target === lightboxContent) {
+                    closeLightbox();
+                }
+            });
+
+            // Zoom toggle
+            zoomToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                lightboxContent.classList.toggle('zoomed');
+                const icon = zoomToggle.querySelector('i');
+                if (lightboxContent.classList.contains('zoomed')) {
+                    icon.classList.remove('fa-search-plus');
+                    icon.classList.add('fa-search-minus');
+                } else {
+                    icon.classList.remove('fa-search-minus');
+                    icon.classList.add('fa-search-plus');
+                }
+            });
+
+            // Keyboard escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
         })();
     </script>
 </body>
